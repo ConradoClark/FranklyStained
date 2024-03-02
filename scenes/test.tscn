@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm41chwnk1tvu"]
+
+[ext_resource type="Texture2D" uid="uid://c2w03440ylfv5" path="res://sprites/ui/attack_option.png" id="1_dlxqv"]
+[ext_resource type="Texture2D" uid="uid://cs0pxwhyfi5s0" path="res://sprites/ui/attack_slot.png" id="2_dd35b"]
+[ext_resource type="Texture2D" uid="uid://s3j0ckuq55vb" path="res://sprites/ui/hp_meter.png" id="3_bheig"]
+[ext_resource type="Texture2D" uid="uid://unhbc3jqkq0s" path="res://sprites/ui/hp_gauge.png" id="4_64sju"]
+
+[node name="Node2D" type="Node2D"]
+texture_filter = 1
+
+[node name="AttackOption" type="Sprite2D" parent="."]
+position = Vector2(92, 108)
+texture = ExtResource("1_dlxqv")
+
+[node name="AttackOption2" type="Sprite2D" parent="."]
+position = Vector2(42, 127)
+texture = ExtResource("1_dlxqv")
+
+[node name="AttackOption3" type="Sprite2D" parent="."]
+position = Vector2(142, 127)
+texture = ExtResource("1_dlxqv")
+
+[node name="AttackOption4" type="Sprite2D" parent="."]
+position = Vector2(92, 146)
+texture = ExtResource("1_dlxqv")
+
+[node name="AttackGauge" type="NinePatchRect" parent="."]
+offset_left = 5.0
+offset_top = 215.0
+offset_right = 183.0
+offset_bottom = 246.0
+texture = ExtResource("2_dd35b")
+patch_margin_left = 16
+patch_margin_top = 15
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="HpMeter" type="Sprite2D" parent="."]
+position = Vector2(122, 23)
+texture = ExtResource("3_bheig")
+
+[node name="HpGauge" type="Sprite2D" parent="HpMeter"]
+modulate = Color(0.698039, 0.811765, 0.513726, 1)
+texture = ExtResource("4_64sju")
+
+[node name="HpMeter2" type="Sprite2D" parent="."]
+position = Vector2(357, 23)
+texture = ExtResource("3_bheig")
+flip_h = true
+
+[node name="HpGauge2" type="Sprite2D" parent="HpMeter2"]
+modulate = Color(0.698039, 0.811765, 0.513726, 1)
+texture = ExtResource("4_64sju")
+flip_h = true

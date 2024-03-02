@@ -14,7 +14,29 @@ config/name="FranklyStained"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://scripts/globals.gd"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[file_customization]
+
+folder_colors={
+"res://scenes/": "yellow",
+"res://scripts/": "pink",
+"res://sprites/": "green"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.113725, 0.117647, 0.121569, 1)
