@@ -1,0 +1,154 @@
+[gd_scene load_steps=12 format=3 uid="uid://h8y156f888lu"]
+
+[ext_resource type="Shader" path="res://shaders/character_shader.gdshader" id="1_0vyu7"]
+[ext_resource type="Texture2D" uid="uid://785mu460s1ci" path="res://sprites/characters/human_form_head.png" id="1_orfbs"]
+[ext_resource type="Texture2D" uid="uid://cdbx02lcym05g" path="res://sprites/characters/human_form_rightarm.png" id="2_ne37i"]
+[ext_resource type="Texture2D" uid="uid://cwhu2pc5maxe0" path="res://sprites/characters/human_form_rightleg.png" id="3_menuo"]
+[ext_resource type="Texture2D" uid="uid://b6kj4bfx337e8" path="res://sprites/characters/human_form_torso.png" id="4_uucvq"]
+[ext_resource type="Texture2D" uid="uid://dxs7gnig3oc15" path="res://sprites/characters/human_form_leftarm.png" id="5_4el67"]
+[ext_resource type="Texture2D" uid="uid://dinuhpjpq1hyh" path="res://sprites/characters/human_form_leftleg.png" id="6_lb6xm"]
+[ext_resource type="Texture2D" uid="uid://di4vioqxm8j6q" path="res://sprites/characters/shadow.png" id="8_oe6ji"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b81us"]
+shader = ExtResource("1_0vyu7")
+shader_parameter/color1 = Color(0.113725, 0.117647, 0.121569, 1)
+shader_parameter/width1 = 1.0
+shader_parameter/color2 = Color(0.980392, 1, 0.980392, 1)
+shader_parameter/width2 = 1.0
+
+[sub_resource type="Animation" id="Animation_704hp"]
+resource_name = "stand"
+length = 1.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteGroup/Head:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteGroup/RightArm:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteGroup/RightLeg:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteGroup/Torso:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteGroup/LeftArm:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteGroup/LeftLeg:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xkoje"]
+_data = {
+"stand": SubResource("Animation_704hp")
+}
+
+[node name="Player" type="Node2D"]
+texture_filter = 1
+position = Vector2(85, 50)
+
+[node name="SpriteGroup" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_b81us")
+
+[node name="Head" type="Sprite2D" parent="SpriteGroup"]
+texture = ExtResource("1_orfbs")
+hframes = 6
+vframes = 6
+frame = 3
+
+[node name="RightArm" type="Sprite2D" parent="SpriteGroup"]
+texture = ExtResource("2_ne37i")
+hframes = 6
+vframes = 6
+frame = 3
+
+[node name="RightLeg" type="Sprite2D" parent="SpriteGroup"]
+texture = ExtResource("3_menuo")
+hframes = 6
+vframes = 6
+frame = 3
+
+[node name="Torso" type="Sprite2D" parent="SpriteGroup"]
+texture = ExtResource("4_uucvq")
+hframes = 6
+vframes = 6
+frame = 3
+
+[node name="LeftArm" type="Sprite2D" parent="SpriteGroup"]
+texture = ExtResource("5_4el67")
+hframes = 6
+vframes = 6
+frame = 3
+
+[node name="LeftLeg" type="Sprite2D" parent="SpriteGroup"]
+texture = ExtResource("6_lb6xm")
+hframes = 6
+vframes = 6
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xkoje")
+}
+autoplay = "stand"
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.611765)
+z_index = -1
+position = Vector2(-7, 27)
+texture = ExtResource("8_oe6ji")
